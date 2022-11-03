@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/require-v-for-key -->
 <template>
-  <div class="block bg_white cl_black">
+  <div class="block bg_white cl_black" v-if="windowTop > 4000">
     <h2>Subscribe To Our Newsletter</h2>
     <input class="email" type="text" placeholder="Enter your email..." />
     <button type="submit" class="up_case bg_white subcribe button">
@@ -8,7 +8,23 @@
     </button>
   </div>
 </template>
-<script></script>
+<script>
+export default {
+  data() {
+    return {
+      windowTop: 0,
+    };
+  },
+  mounted() {
+    window.addEventListener("scroll", this.onScroll);
+  },
+  methods: {
+    onScroll(e) {
+      this.windowTop = e.target.documentElement.scrollTop;
+    },
+  },
+};
+</script>
 <style>
 .block {
   width: 100%;
@@ -20,6 +36,7 @@
   color: white;
   letter-spacing: 0.3rem;
   margin-bottom: 3rem;
+  margin-top: 5rem;
 }
 .button {
   height: 50px;

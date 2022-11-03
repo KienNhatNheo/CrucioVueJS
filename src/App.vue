@@ -17,6 +17,7 @@
   <shareholder />
   <contact />
   <footerapp />
+  <go-to-top />
 </template>
 
 <script>
@@ -37,6 +38,7 @@ import "vue-slick-carousel/dist/vue-slick-carousel.css";
 import Shareholder from "./components/Shareholder.vue";
 import Contact from "./components/Contact.vue";
 import Footerapp from "./components/Footerapp.vue";
+import GoToTop from "./components/GoToTop.vue";
 export default {
   name: "App",
   components: {
@@ -56,6 +58,7 @@ export default {
     Shareholder,
     Contact,
     Footerapp,
+    GoToTop,
   },
 };
 </script>

@@ -1,32 +1,36 @@
-<!-- eslint-disable vue/require-v-for-key -->
+eslint-disable vue/require-v-for-key
 <template>
-  <div id="portfolio" class="service">
-    <div class="service-header">OUR PORTFOLIO</div>
-    <div class="service-hr"></div>
-    <div class="task-bar">
-      <div class="task-item" v-for="(item, index) in classify" :key="index">
-        {{ item.name }}
+  <div v-if="windowTop > 3400">
+    <div id="portfolio" class="service">
+      <div class="service-header">OUR PORTFOLIO</div>
+      <div class="service-hr"></div>
+      <div class="task-bar">
+        <div class="task-item" v-for="(item, index) in classify" :key="index">
+          <div @click="changetask(item.img_id)">{{ item.name }}</div>
+        </div>
       </div>
-    </div>
-    <div class="material">
-      <div class="m-out" v-for="(item, index) in project" :key="index">
-        <div :class="'mtr-' + ++index">
-          <div class="ps">
-            <div class="m-name big">{{ item.name }}</div>
-            <div class="m-role">{{ item.des }}</div>
+      <div class="material">
+        <div class="m-out" v-for="(item, index) in current_img" :key="index">
+          <div :class="'mtr-' + item">
+            <div class="ps">
+              <div class="m-name big">{{ project[item - 1].name }}</div>
+              <div class="m-role">{{ project[item - 1].des }}</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="mbutton-bg">
-    <div class="material-button">LOAD MORE</div>
+    <div class="mbutton-bg" v-if="loadmorebutton == true">
+      <div class="material-button" @click="showAll">LOAD MORE</div>
+    </div>
   </div>
 </template>
 <script>
 export default {
   data() {
     return {
+      current_img: [1, 2, 3, 4, 5, 6, 7, 8],
+      loadmorebutton: true,
       project: [
         {
           name: "Project #1",
@@ -60,7 +64,12 @@ export default {
           name: "Project #8",
           des: "Project Description",
         },
+        {
+          name: "Project #9",
+          des: "Project Description",
+        },
       ],
+      windowTop: 0,
       classify: [
         {
           name: "All",
@@ -81,9 +90,26 @@ export default {
       ],
     };
   },
+  mounted() {
+    window.addEventListener("scroll", this.onScroll);
+  },
+  methods: {
+    onScroll(e) {
+      this.windowTop = e.target.documentElement.scrollTop;
+    },
+    // eslint-disable-next-line no-unused-vars
+    changetask(img_id) {
+      this.current_img = img_id;
+      this.loadmorebutton = true;
+    },
+    showAll() {
+      this.current_img = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+      this.loadmorebutton = false;
+    },
+  },
 };
 </script>
-<style>
+<style scoped>
 .service {
   text-align: center;
   margin-bottom: 0rem;
@@ -176,7 +202,13 @@ export default {
   background-size: cover;
   animation: slide-r 1s ease-in-out forwards;
 }
-
+.mtr-9 {
+  width: 100%;
+  overflow: hidden;
+  background-image: url("https://crucio.riccardoborchi.it/wp-content/uploads/2017/03/work8.jpg");
+  background-size: cover;
+  animation: slide-r 1s ease-in-out forwards;
+}
 .mtr-1:hover .ps {
   visibility: visible;
 }
@@ -244,6 +276,14 @@ export default {
   transition: 2s ease;
 }
 
+.mtr-9:hover .ps {
+  visibility: visible;
+}
+
+.mtr-9:hover {
+  transform: scale(1.2);
+  transition: 2s ease;
+}
 .m-out {
   overflow: hidden;
   width: 25%;

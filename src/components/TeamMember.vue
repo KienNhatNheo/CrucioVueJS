@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/require-v-for-key -->
 <template>
-  <div id="team" class="service">
+  <div id="team" class="service" v-if="windowTop > 1500">
     <div class="service-header">OUR TEAM</div>
     <div class="service-hr"></div>
     <ul class="member">
@@ -24,6 +24,7 @@
 export default {
   data() {
     return {
+      windowTop: 0,
       member: [
         {
           name: "SAMANTA L.",
@@ -53,6 +54,14 @@ export default {
         },
       ],
     };
+  },
+  mounted() {
+    window.addEventListener("scroll", this.onScroll);
+  },
+  methods: {
+    onScroll(e) {
+      this.windowTop = e.target.documentElement.scrollTop;
+    },
   },
 };
 </script>

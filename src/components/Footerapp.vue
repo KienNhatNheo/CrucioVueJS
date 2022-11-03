@@ -1,22 +1,24 @@
 <!-- eslint-disable vue/require-v-for-key -->
 <template>
-  <div class="footer">
-    <div>
-      <a href="#"
-        ><img
-          src="https://crucio.riccardoborchi.it/wp-content/uploads/2017/05/logo-1.png"
-          alt="logo"
-      /></a>
+  <div>
+    <div class="footer">
+      <div>
+        <a href="#"
+          ><img
+            src="https://crucio.riccardoborchi.it/wp-content/uploads/2017/05/logo-1.png"
+            alt="logo"
+        /></a>
+      </div>
+      <div class="logo-task">
+        <ul>
+          <li v-for="(item, index) in icon" :key="index">
+            <a href="#"><iconify-icon :icon="item"></iconify-icon></a>
+          </li>
+        </ul>
+      </div>
     </div>
-    <div class="logo-task">
-      <ul>
-        <li v-for="(item, index) in icon" :key="index">
-          <a href="#"><iconify-icon :icon="item"></iconify-icon></a>
-        </li>
-      </ul>
-    </div>
+    <div class="footer-end">© 2017. Crucio. All Rights Reserved.</div>
   </div>
-  <div class="footer-end">© 2017. Crucio. All Rights Reserved.</div>
 </template>
 <script>
 export default {

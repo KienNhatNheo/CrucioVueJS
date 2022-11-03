@@ -1,11 +1,27 @@
 <!-- eslint-disable vue/require-v-for-key -->
 <template>
-  <div class="started">
+  <div class="started" v-if="windowTop > 800">
     <div class="started-content">WE CREATE AWESOME PROJECTS</div>
     <div class="started-button">GET STARTED</div>
   </div>
 </template>
-<script></script>
+<script>
+export default {
+  data() {
+    return {
+      windowTop: 0,
+    };
+  },
+  mounted() {
+    window.addEventListener("scroll", this.onScroll);
+  },
+  methods: {
+    onScroll(e) {
+      this.windowTop = e.target.documentElement.scrollTop;
+    },
+  },
+};
+</script>
 <style>
 .started {
   width: 100%;
