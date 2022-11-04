@@ -2,7 +2,7 @@
 <template>
   <div id="body">
     <div class="body-content">
-      <div class="main-content">
+      <div class="main-content" style="overflow: hidden">
         <h1 class="move">CRUCIO</h1>
         <div class="hr">__</div>
         <div class="main-content-bottom">POWERFUL WEBSITES</div>

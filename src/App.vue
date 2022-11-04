@@ -13,7 +13,7 @@
   <project />
   <subcribe />
   <discuss />
-  <Slider />
+  <demo />
   <shareholder />
   <contact />
   <footerapp />
@@ -33,12 +33,12 @@ import Sumary from "./components/Sumary.vue";
 import Project from "./components/Project.vue";
 import Subcribe from "./components/Subcribe.vue";
 import Discuss from "./components/Discuss.vue";
-import Slider from "./components/Slider.vue";
 import "vue-slick-carousel/dist/vue-slick-carousel.css";
 import Shareholder from "./components/Shareholder.vue";
 import Contact from "./components/Contact.vue";
 import Footerapp from "./components/Footerapp.vue";
 import GoToTop from "./components/GoToTop.vue";
+import Demo from "./components/Demo.vue";
 export default {
   name: "App",
   components: {
@@ -54,11 +54,11 @@ export default {
     Project,
     Subcribe,
     Discuss,
-    Slider,
     Shareholder,
     Contact,
     Footerapp,
     GoToTop,
+    Demo,
   },
 };
 </script>
